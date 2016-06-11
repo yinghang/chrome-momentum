@@ -1,0 +1,20 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "Momentum by Ying Hang",
+  "version": "1.0",
+  "description": "Momentum Extension by Ying Hang",
+
+  "browser_action": {
+    "default_icon": "logo.png"
+  },
+
+    "chrome_url_overrides": {
+      "newtab": "momentum.html"
+    },
+
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}

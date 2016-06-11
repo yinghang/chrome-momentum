@@ -4,40 +4,29 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Momentum</title>
-
 	<!-- Weather Icons stuff -->
 	<link rel="stylesheet" href="css/weather-icons.min.css">
 
 
 	<!-- Bootstrap stuff -->
-	<link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.min.css">
-	<script src="../../lib/jquery.js"></script>
-	<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 
 	<!-- our files -->
 	<link rel="stylesheet" href="css/momentum.css" type="text/css">
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/momentum-weather.js"></script>
 	<script src="js/momentum-quote.js"></script>
 	<script src="js/momentum.js"></script>
-	<script>
-	$(function() {
-		// create a new momentum core
-		var core = new momentum.Core();
-
-		core.start();
-		// I want to run the time update and rendering every second
-		setInterval(function() {
-			core.updateTime();
-			core.render();
-		},1000*30);
-		
-		// I only want to fetch and update the weather once every ten minutes
-		setInterval(function() {
-			core.updateWeather();
-			core.render();
-		}, 1000*60*10);
-	});
-	</script>
+	
 </head>
 <body>
 	<!-- YOUR HTML IN HERE -->
@@ -56,5 +45,6 @@
 				<div id="quote-text"></div>
 		</div>
 	</div>
+	<script src="js/start.js"></script>
 </body>
 </html>
