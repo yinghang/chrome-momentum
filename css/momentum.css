@@ -1,0 +1,76 @@
+.bg-wrapper{
+    background-image:url('https://source.unsplash.com/category/buildings/1920x1080');
+    background-size:cover;
+    height:100vh;
+}
+
+.bg-wrapper h1, h2, h3{
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 15vw;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin:0;
+}
+
+.bg-wrapper h3{
+    font-size: 4vw;
+}
+
+.bg-wrapper h2{
+    font-size: 3vw;
+}
+
+.bg-wrapper::before{
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.35);
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-right {
+  position: fixed;
+  top: 5%;
+  left: 85%;
+}
+
+.bottom-third {
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.block-text h1,h2{
+    display:inline;
+}
+
+.quote{
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 2vw;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin:0;
+}
+
+#quote-text{
+    font-size:1.5vw;
+}
+
+.weather{
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 3vw;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin:0;
+}
