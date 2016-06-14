@@ -6,7 +6,7 @@ window.momentum = window.momentum || {};
 
 momentum.WeatherCtrl = function() {
   this.apiKey = "2fa8d7829e39deb65ec58c425b7f4768";
-  this.apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=Philadelphia&APPID=" + this.apiKey;
+  this.apiUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=" + this.apiKey;
 };
 
 momentum.WeatherCtrl.prototype = {
@@ -15,9 +15,9 @@ momentum.WeatherCtrl.prototype = {
 	// 
 	// hint. look into $.ajax here: http://api.jquery.com/jquery.ajax/
 	// hint. read through the documentation for the OpenWeatherAPI.
-fetchWeather: function(cb) {
+fetchWeather: function(lat, lon, cb) {
     $.ajax({
-      url: this.apiUrl,
+      url: this.apiUrl + "&lat=" + lat + "&lon=" + lon,
       method: "GET",
       success: cb
     });

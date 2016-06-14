@@ -37,9 +37,9 @@
 }
 
 .top-right {
-  position: fixed;
-  top: 5%;
-  left: 85%;
+  position:fixed;
+  top: 2vh;
+  right: 2vh;
 }
 
 .bottom-third {

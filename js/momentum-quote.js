@@ -5,7 +5,7 @@ window.momentum = window.momentum || {};
 // Quotes
 
 momentum.QuoteCtrl = function() {
-  this.apiUrl = "https://horizonshq.herokuapp.com/api/quotes";
+  this.apiUrl = "https://horizonshq.herokuapp.com/api/inspirationalquotes";
 };
 
 momentum.QuoteCtrl.prototype = {

@@ -9,12 +9,15 @@ momentum.Core = function() {
   this.quoteStr = "";
   this.weatherStr = "";
   this.ampm = "AM";
+  this.salutation = "morning";
   
   this.timeEl = $("#time");
   this.quoteEl = $("#quote-text");
   this.weatherEl = $("#weather");
   this.greetingEl = $("#greetings");
   this.ampmEl = $("#ampm");
+  this.lat;
+  this.lon;
   
   // weather controller
   this.weatherCtrl = new momentum.WeatherCtrl();
@@ -32,9 +35,17 @@ momentum.Core.prototype = {
 		// YOUR CODE HERE
 		var date = new Date();
 		var hours = date.getHours();
+		if(hours>12){
+			this.salutation = "afternoon";
+		}
+		if(hours>18){
+			this.salutation = "evening";
+		}
+		if(hours > 11 && hours < 24){
+			this.ampm = "PM";
+		}
 		if(hours > 12){
 			hours -= 12;
-			this.ampm = "PM";
 		}
 		var mins = date.getMinutes();
 		if(mins < 10){
@@ -51,9 +62,6 @@ momentum.Core.prototype = {
 	// hint. check out the `Date` object! Use `getHours` and `getMinutes`.
 	// hint. figure out what kind of response the quoteData is going to be, and see how you might be able to access the quote of the day from that.
   setQuote: function(quoteData) {
-		// YOUR CODE HERE
-		console.log("TEST Starts");
-		console.log(quoteData.message);
 		this.quoteStr = quoteData.message;
 		this.quoteEl.text(this.quoteStr);
 		this.render();
@@ -65,6 +73,7 @@ momentum.Core.prototype = {
   setWeather: function(weatherData) {
 		// YOUR CODE HERE
 		this.weatherStr = Math.floor(weatherData.main.temp - 273.15);
+		console.log(weatherData.main.temp);
 		this.render();
   },
 	// `updateTime` method
@@ -79,7 +88,7 @@ momentum.Core.prototype = {
 	// note. you might run into scoping issues again. You should know how to solve them by now, using .call, .apply, or .bind.
   updateWeather: function() {
 	// YOUR CODE HERE
-	this.weatherCtrl.fetchWeather(this.setWeather.bind(this));
+	this.weatherCtrl.fetchWeather(this.lat, this.lon, this.setWeather.bind(this));
   },
 	// `updateQuote` method
 	// This function should call quoteCtrl.fetchQuote and pass in this.setQuote as the callback.
@@ -93,11 +102,27 @@ momentum.Core.prototype = {
 	// `start` method
 	// This method will call some of the `update...` methods. This function will be called when the page has finished loading, so that Momentum can start off with the more up-to-date data.
 	start: function() {
-		// YOUR CODE HERE
 		this.setTime();
 		this.updateWeather();
 		this.updateQuote();
 		this.render();
+
+		// get location
+		if (!navigator.geolocation){
+		  throw "Geolocation not supported!";
+		}
+
+		function error() {
+		  throw "Error occured!";
+		};
+
+		navigator.geolocation.getCurrentPosition(function(position) {
+		  this.lat = position.coords.latitude;
+		  this.lon = position.coords.longitude;
+		  console.log(this.lat, this.lon);
+		}, error);
+		
+
 	},
 	// `render` method
 	// This method should "render" the time, quote and weather strings on your page by replacing the text value of your elements with their respective properties.
@@ -105,7 +130,7 @@ momentum.Core.prototype = {
   render: function() {
 		// YOUR CODE HERE
 		this.timeEl.text(this.timeStr);
-		this.greetingEl.text("Good afternoon, Ying Hang");
+		this.greetingEl.text("Good " + this.salutation +", Ying Hang");
 		this.ampmEl.text(this.ampm);
 		this.weatherEl.text(this.weatherStr);
 		this.quoteEl.text(this.quoteStr);
