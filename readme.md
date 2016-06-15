@@ -2,7 +2,7 @@
 
 Chrome Momentum Extension Clone. Developed at Horizons Bootcamp. JS, HTML, CSS & Boostrap used in development.
 
-![Alt text](/screenshot.png)
+![Alt text](/screenshot.jpg)
 
 ### Need to be fixed
 - Configurable name
