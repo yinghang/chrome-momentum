@@ -2,6 +2,8 @@
 
 Chrome Momentum Extension Clone. Developed at Horizons Bootcamp. JS, HTML, CSS & Boostrap used in development.
 
+![Alt text](/screenshot.png)
+
 ### Need to be fixed
 - Configurable name
 - Variable weather icon
