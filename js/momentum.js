@@ -10,12 +10,14 @@ momentum.Core = function() {
   this.weatherStr = "";
   this.ampm = "AM";
   this.salutation = "morning";
+  this.location = "";
   
   this.timeEl = $("#time");
   this.quoteEl = $("#quote-text");
   this.weatherEl = $("#weather");
   this.greetingEl = $("#greetings");
   this.ampmEl = $("#ampm");
+  this.city = $("#location");
   this.lat;
   this.lon;
   
@@ -73,7 +75,7 @@ momentum.Core.prototype = {
   setWeather: function(weatherData) {
 		// YOUR CODE HERE
 		this.weatherStr = Math.floor(weatherData.main.temp - 273.15);
-		console.log(weatherData.main.temp);
+		this.location = weatherData.name;
 		this.render();
   },
 	// `updateTime` method
@@ -97,7 +99,7 @@ momentum.Core.prototype = {
 	updateQuote: function() {
 		// YOUR CODE HERE
 		this.quoteCtrl.fetchQuote(this.setQuote.bind(this));
-		this.render();
+
 	},
 	// `start` method
 	// This method will call some of the `update...` methods. This function will be called when the page has finished loading, so that Momentum can start off with the more up-to-date data.
@@ -136,5 +138,6 @@ momentum.Core.prototype = {
 		this.ampmEl.text(this.ampm);
 		this.weatherEl.text(this.weatherStr);
 		this.quoteEl.text(this.quoteStr);
+		this.city.text(this.location);
   }
 };
