@@ -103,7 +103,7 @@ momentum.Core.prototype = {
 	// This method will call some of the `update...` methods. This function will be called when the page has finished loading, so that Momentum can start off with the more up-to-date data.
 	start: function() {
 		this.setTime();
-		this.updateWeather();
+		
 		this.updateQuote();
 		this.render();
 
@@ -117,10 +117,12 @@ momentum.Core.prototype = {
 		};
 
 		navigator.geolocation.getCurrentPosition(function(position) {
+		  console.log("EXECUTING");
 		  this.lat = position.coords.latitude;
 		  this.lon = position.coords.longitude;
 		  console.log(this.lat, this.lon);
-		}, error);
+		  this.updateWeather();
+		}.bind(this), error);
 		
 
 	},
