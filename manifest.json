@@ -14,6 +14,7 @@
 
   "permissions": [
     "activeTab",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "geolocation"
   ]
 }
